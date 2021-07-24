@@ -1,0 +1,32 @@
+﻿<Window x:Class="mPUObserver.Player"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:mPUObserver" 
+        xmlns:uc="clr-namespace:LibVLCSharp.WPF;assembly=LibVLCSharp.WPF"
+        mc:Ignorable="d"
+        Title="Player" Height="450" Width="800" StateChanged="Window_StateChanged_1">
+    <Window.DataContext>
+        <local:PlayerViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" x:Name="test">
+            <Button Content="Open" Height="25" Width="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="Button_Click_1" />
+            <Button Command="{Binding PlayCommand}" Content="Play" Height="25" Width="50" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+            <Button Content="Stop" Height="25" Width="50" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+            <TextBox Width="100" Text="{Binding OffsetMS,UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox IsChecked="{Binding Repeat,UpdateSourceTrigger=PropertyChanged}"/>
+            <!--<Slider Width="500" Name="seek" Minimum="0" Maximum="1" Value="{Binding Seeker,UpdateSourceTrigger=PropertyChanged}"></Slider>-->
+        </StackPanel>
+        <uc:VideoView Grid.Row="1"  x:Name="VideoView" MediaPlayer="{Binding MediaPlayer}" >
+        </uc:VideoView>
+    </Grid>
+</Window>

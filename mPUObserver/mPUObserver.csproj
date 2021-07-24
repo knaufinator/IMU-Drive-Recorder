@@ -1,0 +1,98 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\BRZ2.stl" />
+    <None Remove="Resources\circle.stl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ArctionGaugesWPF" Version="1.0.1.1" />
+    <PackageReference Include="Cyotek.Drawing.BitmapFont" Version="2.0.2" />
+    <PackageReference Include="EFCore.BulkExtensions" Version="5.3.0" />
+    <PackageReference Include="FontAwesome.Sharp" Version="5.15.3" />
+    <PackageReference Include="HelixToolkit" Version="2.17.0" />
+    <PackageReference Include="HelixToolkit.Wpf" Version="2.17.0" />
+    <PackageReference Include="HelixToolkit.Wpf.SharpDX" Version="2.17.0" />
+    <PackageReference Include="LibVLCSharp" Version="3.5.1" />
+    <PackageReference Include="LibVLCSharp.WPF" Version="3.5.1" />
+    <PackageReference Include="LiveCharts.Geared" Version="1.2.9" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-beta.33" />
+    <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.8" />
+    <PackageReference Include="MouseKeyHook" Version="5.6.0" />
+    <PackageReference Include="OBS.WebSocket.NET" Version="4.7.2" />
+    <PackageReference Include="ODB.NET.Desktop" Version="1.1.0" />
+    <PackageReference Include="SharpDX" Version="4.2.0" />
+    <PackageReference Include="SharpDX.Direct2D1" Version="4.2.0" />
+    <PackageReference Include="SharpDX.Direct3D11" Version="4.2.0" />
+    <PackageReference Include="SharpDX.Direct3D11.Effects" Version="4.2.0" />
+    <PackageReference Include="SharpDX.Mathematics" Version="4.2.0" />
+    <PackageReference Include="SharpDX.MediaFoundation" Version="4.2.0" />
+    <PackageReference Include="System.IO.Ports" Version="5.0.1" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.16" />
+    <PackageReference Include="Vlc.DotNet.Wpf" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="3DTools">
+      <HintPath>3DTools.dll</HintPath>
+    </Reference>
+    <Reference Include="OBD.NET.Common">
+      <HintPath>OBD.NET.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="OBD.NET.Universal">
+      <HintPath>OBD.NET.Universal.dll</HintPath>
+    </Reference>
+    <Reference Include="Obd2NetCore">
+      <HintPath>Obd2NetCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Obd2NetCore.InfrastructureContracts">
+      <HintPath>Obd2NetCore.InfrastructureContracts.dll</HintPath>
+    </Reference>
+    <Reference Include="ODB.NET.Desktop">
+      <HintPath>ODB.NET.Desktop.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\BRZ2.stl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\circle.stl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
