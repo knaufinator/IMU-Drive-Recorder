@@ -8,3 +8,4 @@ The app will record the data to a SQLite database at around 1000 HZ, from the IM
 
 The SimTools Game plugin is also included, this will need to be compiled and installed into simtools using the plugin updater. This will allow the Drive recorder app to comunicate to simtools and allow motion.
 
+OBD2 access is also enabled, I use a OBDLink mx bluetooth adapter to get access to the car ECU. I have found the common cheap chinease ones did not work as nice,.. but YRMV.
