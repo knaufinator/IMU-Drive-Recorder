@@ -234,7 +234,9 @@ namespace mPUObserver
 
                     try
                     {
-                        switchTask = Task.Run(() => CamSwitcher(token), token);
+
+                        //run this if you want cams to switch
+                       // switchTask = Task.Run(() => CamSwitcher(token), token);
                     }
                     catch (Exception err)
                     {

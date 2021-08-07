@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -32,7 +33,10 @@ namespace mPUObserver
         private bool repeat = false;
         private long lastPlayTime = 0;
         private long lastPlayTimeGlobal = 0;
-       
+
+        private WindowState windowState = WindowState.Normal;
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); }
 
@@ -49,6 +53,7 @@ namespace mPUObserver
         internal void loadMainViewModel(MainWindowViewModel vm)
         {
             _vm = vm;
+            Subscribe();
         }
 
         DateTime lastseekerChange = DateTime.Now;
@@ -67,7 +72,16 @@ namespace mPUObserver
             if (Repeat)
                 Play();
         }
-
+        
+        public WindowState FormWindowState
+        {
+            get => windowState;
+            set
+            {
+                windowState = value;
+                OnPropertyChanged();
+            }
+        }
         public bool Repeat
         {
             get => repeat;
@@ -92,7 +106,7 @@ namespace mPUObserver
             get => offsetMS;
             set
             {
-                if (value < 2000)
+                if (value < 200000)
                 {
                     offsetMS = value;
                     OnPropertyChanged();
@@ -145,17 +159,9 @@ namespace mPUObserver
             var endTime = start + new TimeSpan(0, 0, 0, 0, (int)(videoTimeMs + toleranceMS + offsetMS));// + offsetTimeSpan;
             return endTime;
         }
-        private void GlobalHookKeyPress(object sender, KeyPressEventArgs e)
-        {
-            Console.WriteLine("KeyPress: \t{0}", e.KeyChar);
 
-            var key = (Keys)e.KeyChar;
+        
 
-            if (key == Keys.Escape)
-            {
-            //    this.WindowState = WindowState.Normal;
-            }
-        }
         private void SubmitForce(Force force)
         {
             //send this to vis side
@@ -184,7 +190,7 @@ namespace mPUObserver
 
             var item3 = dbContext.Forces.Where(a => a.time >= start.Ticks & a.time <= end.Ticks).OrderBy(i => i.time).FirstOrDefault();
 
-            if (item3 != null)
+                if (item3 != null)
                 SubmitForce(item3);
         }
         public float getCurrentTime()
@@ -261,16 +267,6 @@ namespace mPUObserver
             }
         }
 
-        public void Unsubscribe()
-        {
-            m_GlobalHook.KeyPress -= GlobalHookKeyPress;
-            m_GlobalHook.Dispose();
-        }
-        public void Subscribe()
-        {
-            m_GlobalHook = Hook.GlobalEvents();
-            m_GlobalHook.KeyPress += GlobalHookKeyPress;
-        }
     }
 }
 

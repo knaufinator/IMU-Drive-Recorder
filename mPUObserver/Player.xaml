@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mPUObserver" 
         xmlns:uc="clr-namespace:LibVLCSharp.WPF;assembly=LibVLCSharp.WPF"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
         Title="Player" Height="450" Width="800" StateChanged="Window_StateChanged_1">
     <Window.DataContext>
         <local:PlayerViewModel />
