@@ -53,7 +53,7 @@ namespace mPUObserver
         internal void loadMainViewModel(MainWindowViewModel vm)
         {
             _vm = vm;
-            Subscribe();
+          //  Subscribe();
         }
 
         DateTime lastseekerChange = DateTime.Now;

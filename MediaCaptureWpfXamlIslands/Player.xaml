@@ -1,0 +1,19 @@
+﻿<Window x:Class="MediaCaptureWpfXamlIslands.Player"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MediaCaptureWpfXamlIslands" xmlns:controls="clr-namespace:Windows.UI.Xaml.Controls;assembly=Windows.Foundation.UniversalApiContract" xmlns:wct="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
+        mc:Ignorable="d" 
+        Title="Player" Height="450" Width="800" StateChanged="Window_StateChanged_1">
+   
+    
+    <!--<wct:WindowsXamlHost   Name="mediaPlayerElement"  InitialTypeName="Windows.UI.Xaml.Controls.MediaPlayerElement" />-->
+
+    <controls:MediaPlayerElement x:Name="mediaPlayerElement"   HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+
+
+    <!--<uc:VideoView Grid.Row="1"  x:Name="VideoView" MediaPlayer="{Binding MediaPlayer}" >
+        </uc:VideoView>-->
+ 
+</Window>

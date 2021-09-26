@@ -19,7 +19,6 @@ namespace mPUObserver
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Task.Run(() => vm.StartRecording());
-           
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

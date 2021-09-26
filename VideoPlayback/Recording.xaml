@@ -1,0 +1,53 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// This code is licensed under the MIT License (MIT).
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Page
+    x:Class="SDKTemplate.Recording"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SDKTemplate"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:logging="using:SDKTemplate.Logging"
+    mc:Ignorable="d"  >
+    <interactivity:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Loaded">
+            <core:InvokeCommandAction Command="{Binding LoadedCommand, Mode=OneWay}"/>
+        </core:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+    <Page.DataContext>
+        <local:RecordingViewModel/>
+    </Page.DataContext>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12,20,12,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+                <ComboBox ItemsSource="{Binding AllVideoDevices}" SelectedItem="{Binding SelectedVideoDevice}" Width="250" DisplayMemberPath="Name" SelectedValuePath="Id"> 
+                </ComboBox>
+                <ComboBox ItemsSource="{Binding AllAudioDevices}"  SelectedItem="{Binding SelectedAudioDevice}"  Width="250" DisplayMemberPath="Name" SelectedValuePath="Id">
+                </ComboBox>
+                <Button Command="{Binding InitCommand}">Init</Button>
+                <Button Command="{Binding StartRecordingCommand}">Start Recording</Button>
+                <Button Command="{Binding StopRecordingCommand}">Stop Recording</Button>
+            </StackPanel>
+
+            <!--<CaptureElement Grid.Row="1" Source="{Binding MediaCaptureSource}"  x:Name="mediaCaptureElement" HorizontalAlignment="Stretch"/>-->
+            <ContentControl Grid.Row="1" HorizontalAlignment="Stretch"         
+                Content="{Binding CaptureElement}"/>
+        </Grid>
+    </Grid>
+</Page>

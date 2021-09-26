@@ -17,7 +17,6 @@
                 <Setter Property="BorderThickness" Value="2" />
                 <Setter Property="CornerRadius" Value="3" />
             </Style>
-
         </ResourceDictionary>
     </Window.Resources>
     <DockPanel>

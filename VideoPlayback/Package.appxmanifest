@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"  xmlns:uap6="http://schemas.microsoft.com/appx/manifest/uap/windows10/6"  xmlns:iot="http://schemas.microsoft.com/appx/manifest/iot/windows10" IgnorableNamespaces="uap mp uap6 iot">
+  <Identity Name="IMURecorder" Publisher="CN=knauf" Version="1.0.2.0" />
+  <mp:PhoneIdentity PhoneProductId="ebd491cd-3b2f-48d3-80b7-d70ce04724c5" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>IMU Recorder</DisplayName>
+    <PublisherDisplayName>IMU Recorder</PublisherDisplayName>
+    <Logo>Assets\StoreLogo-sdk.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.15063.0" MaxVersionTested="10.0.19041.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="VideoPlayback.App">
+      <uap:VisualElements DisplayName="IMU Recorder" Square150x150Logo="Assets\SquareTile-sdk.png" Square44x44Logo="Assets\SmallTile-sdk.png" Description="IMU Recorder"  BackgroundColor="#00b2f0">
+        <uap:SplashScreen Image="Assets\Splash-sdk.png" />
+        <uap:DefaultTile>
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <uap6:Capability Name="graphicsCapture"/>
+    <Capability Name="internetClientServer"/>
+    <iot:Capability Name="lowLevelDevices"/>
+    <uap:Capability Name="objects3D"/>
+    <uap:Capability Name="picturesLibrary"/>
+    <Capability Name="privateNetworkClientServer"/>
+    <uap:Capability Name="removableStorage"/>
+    <iot:Capability Name="systemManagement"/>
+    <uap:Capability Name="videosLibrary"/>
+    <DeviceCapability Name="bluetooth"/>
+    <DeviceCapability Name="lowLevel"/>
+    <DeviceCapability Name="location"/>
+    <DeviceCapability Name="microphone"/>
+    <DeviceCapability Name="proximity"/>
+    <DeviceCapability Name="webcam"/>
+    <DeviceCapability Name="serialcommunication">
+      <Device Id="any">
+        <Function Type="name:serialPort" />
+      </Device>
+    </DeviceCapability>
+  </Capabilities>
+</Package>
