@@ -277,10 +277,9 @@ namespace SDKTemplate
         private async void StartRecording()
         {
             await InitializeMediaCapture(true);
-
-
-
-            await lowLagMediaRecording.StartAsync();
+            
+            if(lowLagMediaRecording != null)
+                await lowLagMediaRecording.StartAsync();
         }
 
         private RelayCommand stopRecordingCommand;
@@ -300,7 +299,8 @@ namespace SDKTemplate
 
         private async void StopRecording()
         {
-            await lowLagMediaRecording.StopAsync();
+            if(lowLagMediaRecording != null)
+                await lowLagMediaRecording.StopAsync();
         }
 
         private RelayCommand initCommand;
